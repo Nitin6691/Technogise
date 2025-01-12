@@ -9,14 +9,14 @@ public class Main {
         System.out.println("This is chess 1 from Technogise");
 
         String input = "Queen E4";
-        String[][] board = new String[8][8];
+        /*String[][] board = new String[8][8];
 
         for (int i=0; i<8; i++){
             for (int j=0; j<8; j++){
                 board[i][j] = (Character.toString('A'+j))
                         + Integer.toString(8-i);
             }
-        }
+        }*/
 
         /*for (int i=0; i<8; i++){
             for (int j=0; j<8; j++){
@@ -25,7 +25,7 @@ public class Main {
             System.out.println();
         }*/
 
-        System.out.println(getSteps(board, input));
+//        System.out.println(getSteps(board, input));
     }
 
     public static String getSteps(String[][] board, String input){
@@ -47,7 +47,7 @@ public class Main {
 
         String pos = String.valueOf(position.charAt(0));
         int col = map.get(pos);
-        int row = Integer.parseInt(String.valueOf(position.charAt(1)));
+        int row = 8 - Integer.parseInt(String.valueOf(position.charAt(1)));
 //        System.out.println("row and column: "+row+" "+col);
 
         if(peice.equals("Queen")){
@@ -97,17 +97,26 @@ public class Main {
 
             return  result.trim();
         }else if(peice.equals("Pawn")){
-            result += board[row-1][col];
+            if(row-1 >= 0)
+                result += board[row-1][col];
             return  result;
         }else if(peice.equals("King")){
-            result += board[row-1][col]+" ";
-            result += board[row-1][col+1]+" ";
-            result += board[row-1][col-1]+" ";
-            result += board[row][col-1]+" ";
-            result += board[row-1][col+1]+" ";
-            result += board[row+1][col]+" ";
-            result += board[row+1][col+1]+" ";
-            result += board[row+1][col-1];
+            if (row-1>=0)
+                result += board[row-1][col]+" ";
+            if (row-1 >= 0 && col+1 < 8)
+                result += board[row-1][col+1]+" ";
+            if (row-1 >= 0 && col-1 >= 0)
+                result += board[row-1][col-1]+" ";
+            if (col-1 >= 0)
+                result += board[row][col-1]+" ";
+            if (col+1 < 8)
+                result += board[row][col+1]+" ";
+            if (row+1 < 8)
+                result += board[row+1][col]+" ";
+            if (row+1< 8 && col+1 < 8)
+                result += board[row+1][col+1]+" ";
+            if (row+1< 8 && col-1 >= 0)
+                result += board[row+1][col-1];
             return result.trim();
         }else {
             System.out.println("This postitions for this peice can not calculated");
