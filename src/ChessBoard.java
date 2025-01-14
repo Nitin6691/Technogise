@@ -1,10 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class ChessBoard {
     private static ChessBoard chessBoard;
-    private static final Logger logger = Logger.getLogger(ChessBoard.class.getName());
 
     String[][] board = new String[8][8];
 

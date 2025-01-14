@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.logging.Logger;
 
 public class Queen implements ChessPiece{
@@ -8,7 +7,7 @@ public class Queen implements ChessPiece{
     @Override
     public String getSteps(ChessBoard board, String position) {
         logger.info("Inside getSteps()");
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
 
         String pos = String.valueOf(position.charAt(0));
@@ -18,29 +17,29 @@ public class Queen implements ChessPiece{
         logger.info("The current position of the Pawn is [" + row + ", " +col+ "]");
 
         for (int j = col; j<8; j++){
-            result += board.getPosition(row, j)+" ";
+            result.append(board.getPosition(row, j)).append(" ");
         }
         for (int j=col-1; j>=0; j--){
-            result += board.getPosition(row, j)+" ";
+            result.append(board.getPosition(row, j)).append(" ");
         }
 
         for (int i = row; i<8; i++){
-            result += board.getPosition(i, col)+" ";
+            result.append(board.getPosition(i, col)).append(" ");
         }
         for (int i=row-1; i>=0; i--){
-            result += board.getPosition(i, col)+" ";
+            result.append(board.getPosition(i, col)).append(" ");
         }
 
         int i=row+1, j=col+1;
         while(i< 8 && j<8){
-            result += board.getPosition(i, j)+" ";
+            result.append(board.getPosition(i, j)).append(" ");
             i++;
             j++;
         }
         i=row+1;
         j=col-1;
         while(i<8 && j>=0){
-            result += board.getPosition(i, j)+" ";
+            result.append(board.getPosition(i, j)).append(" ");
             i++;
             j--;
         }
@@ -48,18 +47,18 @@ public class Queen implements ChessPiece{
         i=row-1;
         j=col-1;
         while(i>=0 && j>=0){
-            result += board.getPosition(i, j)+" ";
+            result.append(board.getPosition(i, j)).append(" ");
             i--;
             j--;
         }
         i=row-1;
         j=col+1;
         while(i>=0 && j<8){
-            result += board.getPosition(i, j)+" ";
+            result.append(board.getPosition(i, j)).append(" ");
             i--;
             j++;
         }
 
-        return  result.trim();
+        return  result.toString().trim();
     }
 }

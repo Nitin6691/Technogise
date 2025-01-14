@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 //This class is for writing UT cases for this project
 public class TestClass {
 
-    private Main main;
 
     @Test
     public void testInvokeChessService(){
