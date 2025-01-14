@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
+//This class is for writing UT cases for this project
 public class TestClass {
 
     private Main main;

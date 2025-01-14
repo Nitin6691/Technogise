@@ -1,8 +1,10 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class ChessBoard {
     private static ChessBoard chessBoard;
+    private static final Logger logger = Logger.getLogger(ChessBoard.class.getName());
 
     String[][] board = new String[8][8];
 
@@ -16,6 +18,8 @@ public class ChessBoard {
                         + (8 - i);
             }
         }
+
+        //Map to store column index corresponding to the Letter used for determining position on Chessboard
         map.put("A", 0);
         map.put("B", 1);
         map.put("C", 2);

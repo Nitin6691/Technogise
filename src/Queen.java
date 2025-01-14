@@ -1,17 +1,21 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class Queen implements ChessPiece{
-
+    private static final Logger logger = Logger.getLogger(Queen.class.getName());
 
     @Override
     public String getSteps(ChessBoard board, String position) {
+        logger.info("Inside getSteps()");
         String result = "";
 
 
         String pos = String.valueOf(position.charAt(0));
         int col = board.getColumn(pos);
         int row = 8 - Integer.parseInt(String.valueOf(position.charAt(1)));
+
+        logger.info("The current position of the Pawn is [" + row + ", " +col+ "]");
 
         for (int j = col; j<8; j++){
             result += board.getPosition(row, j)+" ";
