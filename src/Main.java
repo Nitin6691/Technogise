@@ -1,4 +1,7 @@
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -9,8 +12,32 @@ public class Main {
 
     public static void main(String[] args) {
         logger.info("This is chess 1 from Technogise");
-        String input = "Queen, E4";
-        System.out.println(invokeChessService(input));
+        List<String> inputs = new ArrayList<>();
+        InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("input.txt");
+
+        if (inputStream != null){
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            String line;
+
+            while (true){
+                try {
+                    line = reader.readLine();
+                    if(line != null)
+                        inputs.add(line);
+                    else
+                        break;
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        for (String input: inputs) {
+            logger.info("Going to call invokeChessService for "+input);
+            System.out.println(invokeChessService(input.substring(1, input.length()-1)));
+        }
+
     }
 
     public static String invokeChessService(String input){
