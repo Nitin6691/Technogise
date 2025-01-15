@@ -16,3 +16,8 @@ Please follow below instrunctions to install and run the project:
 6. Results will be visible on console.
 
 Note: This project currently support only three types of chess peices i.e. King, Queen and Pawn.
+
+
+Additional Information:
+This project in currently implemented as a plain java project only. But it can be implemented as maven/gradle project also which will ease the development process.
+JUnit is used as testing framework and all the dependencies for JUnit are added manually.
